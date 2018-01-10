@@ -179,9 +179,9 @@ def onQQMessage(bot, contact, member, content):
 			typ = res['type']
 			if typ == 'timespan':
 				timeArray = time.strptime(res['timespan'][0], "%Y-%m-%d %H:%M:%S")
-                                startTime = time.strftime("2018%m%dT%H%M%SZ", timeArray)
+                                startTime = time.strftime("%Y%m%dT%H%M%SZ", timeArray)
 				timeArray = time.strptime(res['timespan'][1], "%Y-%m-%d %H:%M:%S")
-                                endTime = time.strftime("2018%m%dT%H%M%SZ", timeArray)
+                                endTime = time.strftime("%Y%m%dT%H%M%SZ", timeArray)
 				add_event = vcal.format(uuid, startTime, endTime, content)
 				try:
 					cal.add_event(add_event)
@@ -194,7 +194,7 @@ def onQQMessage(bot, contact, member, content):
 				bot.SendTo(contact, ansString)
 			if typ == 'timestamp':
 				timeArray = time.strptime(res['timestamp'], "%Y-%m-%d %H:%M:%S")
-				otherStyleTime = time.strftime("2018%m%dT%H%M%SZ", timeArray)
+				otherStyleTime = time.strftime("%Y%m%dT%H%M%SZ", timeArray)
 				add_event = vcal.format(uuid, otherStyleTime, otherStyleTime, content)	
 				try:
 					cal.add_event(add_event)
